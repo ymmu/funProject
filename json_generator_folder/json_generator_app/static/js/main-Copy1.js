@@ -1,9 +1,12 @@
 var rowCount = 1;
+var selectStr='';
 $(function(){
+    
+    
     console.log('ok');
     this.rowCount = 1;
     $('#rowCount').attr('value',this.rowCount);
-    console.log($('#rowCount').val());
+    //console.log($('#rowCount').val());
     //header
     $('#table').append('<thead>'
                        +'<th>name</th><th>add</th><th>delete</th>'
@@ -13,15 +16,41 @@ $(function(){
                        +'</tr>');
     $('#table').append('<tbody id="tbody"></tbody>');
     
+  
     
-    addRow();
+    //get select Options
+    $.ajax({
+        
+        type: "GET",
+        url: "makeJsonList/sOptions",
+        success: function(data){
+            
+            console.log(data['headers']);
+            selectStr = '<select class="selectpicker" id="select_custom">';
+                
+            for(var i=0; i< data['headers'].length; i++){
+                selectStr +='<option value="'+data['headers'][i]+'">'+data['headers'][i]+'</option>';
+                //console.log(this.selectStr);
+
+            }
+                selectStr += '</select>';
+                
+            
+        },
+        error: function(request,status,error){
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+       }
+    }).done(function(){addRow();});
+    
+   
   });
 
 var addRow= function(){
 
-   
+   console.log(selectStr);
     var str = '<tr>'
-        +'<td><select id="select_custom">'
+        +'<td>'+selectStr+'</td>'
+    /*<select id="select_custom">'
         +'<option value="ID">ID</option>'
         +'<option value="Name">Name</option>'
         +'<option value="Email">Email</option>'
@@ -30,7 +59,7 @@ var addRow= function(){
         +'<option value="TEL">TEL</option>'
         +'<option value="Country">Country</option>'
         +'<option value="ISO2">ISO2</option>'
-        +'</select></td>'
+        +'</select></td>'*/
        +'<td><button id="pmbutton" name="add" onclick="addRow()">+</button></td>'
        +'<td><button id="pmbutton" name="delete'+rowCount+'" id="delete'+rowCount+'" onclick="deleteRow('+rowCount+')">-</button></td>'
        +'</tr>';
@@ -38,7 +67,7 @@ var addRow= function(){
     console.log('add: '+rowCount);
     $('#tbody').append(str);
     rowCount++;     
-        
+    $('.selectpicker').selectpicker();    
 };
 
 var deleteRow= function(rowCount){
@@ -67,11 +96,7 @@ var submitB = function(){
     $('tr').each(function(i){ 
         $('td', this).each(function(j){
 
-<<<<<<< HEAD
-            if(i==1 && j==1){
-=======
             if(i==1 && j==0){
->>>>>>> 3e5d6afed9153a9b1f835c47c1e73c315eb2e57a
                 pack.total=$(this).find('input')[0].value;
             }else if(i>1){
                 if(j==0){
@@ -107,7 +132,6 @@ var submitB = function(){
         ,
         success: function(data){
             console.log('seccess:'+window.location.href+data.download_url);
-            window.location.href += data.download_url;
         
             $('.sample').empty();
             var sample = data.sample;
@@ -121,11 +145,6 @@ var submitB = function(){
                     
                     $('.sample').append('{</n><pre>'+first_chunk[1]+'</pre></n>');
                    
-<<<<<<< HEAD
-                    /*$('.sample').append('<pre>'+first_chunck[0]+'</pre><br/>');
-                    */
-=======
->>>>>>> 3e5d6afed9153a9b1f835c47c1e73c315eb2e57a
                 }else if(i<sample_chunk.length-1){
                     $('.sample').append('<pre>'+sample_chunk[i]+'</pre></n>');
         
@@ -139,7 +158,8 @@ var submitB = function(){
                 
             }
             
-            
+            window.location.href += data.download_url;
+        
         },
         error: function(request,status,error){
             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

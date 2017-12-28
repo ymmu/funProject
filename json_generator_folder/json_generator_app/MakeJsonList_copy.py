@@ -2,9 +2,9 @@ import random
 import pandas as pd
 import os.path
 
-
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 def makeJsonList(total,num,dataList):
-    PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+    #PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
     df = pd.read_excel(PROJECT_ROOT + '/general_form.xlsx')
     f = open("./json_generator_app/json_list.json", 'w')
     json_sample=''
@@ -45,3 +45,8 @@ def classify(dataList, i, j, json, df):
     elif dataList=="Password":
         json += "\"password\":\"%s\"" %df['Password'][j]
     return json
+
+def columeHeaderList():
+    
+    df = pd.read_excel(PROJECT_ROOT + '/general_form.xlsx')
+    return df.columns.values.tolist()

@@ -5,6 +5,7 @@ from django.http import JsonResponse
 import json
 #from .MakeJsonList import makeJsonList
 from .MakeJsonList_copy import makeJsonList
+from .MakeJsonList_copy import columeHeaderList
 import os
 from django.conf import settings
 import zipfile
@@ -46,6 +47,19 @@ def download(request):
         response = HttpResponse(FileWrapper(open('/media/ymmu/Dr.Mu/python_study/jangopractice/json_generator_folder/json_generator_app/json_list.json', 'r')), content_type='application/json')
         response['Content-Disposition'] = 'attachment; filename=json_list.json'
     return response
+
+def getSelectOptions(request):
+    return HttpResponse(json.dumps({'headers':columeHeaderList()}),content_type ="application/json");
+
+
+
+
+
+
+
+
+
+
 
 
 def some_view(request):
