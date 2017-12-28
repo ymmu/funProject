@@ -18,4 +18,4 @@
 
 
 <img src="https://github.com/ymmu/json_generator/blob/master/Screenshot%20from%202017-12-29%2001-08-21.png" />
-<img src="https://github.com/ymmu/json_generator/blob/excel_version/Screenshot%20from%202017-12-29%2000-02-53.png" />
+<img src="https://github.com/ymmu/json_generator/blob/master/Screenshot%20from%202017-12-29%2000-02-53.png" />
