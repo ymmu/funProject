@@ -1,33 +1,21 @@
-# json_generator
+# Json_generator
 
-17-12-28. thu
+17-12-28. thu 
 
-이름과 타입을 추가하고, 만들고자 하는 갯수를 입력하면 json 파일로 제공하기 까지.
+- ver1.0 : 이름과 타입을 추가하고, 만들고자 하는 갯수를 입력하면 json 파일로 제공하기 까지.
 
-**추후 수정거리:** 
+- ver2.0 :  엑셀파일에 데이터아카이브를 만들고 거기서 데이터를 제공해준다. 커스텀 필드는 만들 수 없는 상태로 바꿈. 
+- ver2.1 : 
+  - 데이터 아카이브파일의 컬럼의 헤더를 받아와 select option으로 채워준다. 즉, 아카이브에 새컬럼을 작성하면 select의 option으로 알아서 추가된다.
+  - select  bootstrap css 연결 
 
-- 이름, 이메일, 전화번호 등등과 같은 자주 요구되는 String 타입의 요소들에 대해 단순히 똑같은 값들로 채우지 않고, 여러 값들을 제공해준다.
 
-```
-ex>
-{name: String}
 
-변환 후
-->(현재, name에 대해 모두 같은 값(String 타입은))
-{"name": "Jane"}
-{"name": "Jane"}
-...
+**추후 수정거리:**  
 
--> (나중에)
-{"name": " Luke"}
-{"name": " Chris"}
-...
+- 다양한 정형화된 필드를 아카이브에 만들어서 선택지를 늘린다.
+- 보내주는 데이터가 많아질 때 (십만개 이상?) 다운속도를 조사해본다. 속도의 차이가 현격할 경우 병렬처리를 해보자. 
 
-```
-- 타입 유효성 검사: 타입으로 적용할 수 없는 값이 나오면 검사하여 제대로 수정할 수 있도록 돕는다.
-	-  소문자,대문자 모두 허용
-	-  아니면 셀렉트로 입력하지 못하게 선택하게 하는 방법으로.
-```
-ex>
-타입의 'Int'를 'inst' 등으로 적었을 때
-```
+
+<img src="https://github.com/ymmu/json_generator/blob/excel_version/Screenshot%20from%202017-12-29%2001-08-21.png" />
+<img src="https://github.com/ymmu/json_generator/blob/excel_version/Screenshot%20from%202017-12-29%2000-02-53.png" />
