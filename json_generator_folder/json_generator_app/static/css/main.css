@@ -1,0 +1,88 @@
+.wrapper{
+    height: 100%;
+}
+.wrapper > div{
+    display: inline-block;
+    width: 49%;
+    vertical-align:top;
+    height: 100%;
+}
+
+.setting{
+    background-color: #e5e6e6
+}
+
+#rowCount{
+ 
+    /*display: none;*/
+}
+
+.container_custom{
+    margin: 80px 80px 80px 80px;
+}
+
+#title_custom{
+    font: 20px arial, sans-serif;
+    padding: 0 0 40px 0 ;
+    margin: 0 0 40px 0 ;
+    margin: 0 0 40px 0 ;
+}
+
+#submit_custom {
+    width: 100%;
+    background-color: #af5db5;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#table{
+     background-color: #ffffff;
+     border-radius: 5px;
+}
+
+#pmbutton {
+    width: 50px;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-decoration: none;
+    margin: 0px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+     background-color: #afafaf;
+}
+
+input[type=text] {
+    width: 95%;
+    border: 1px;
+    color: #242424;
+    padding: 10px 10px;
+    margin: 0px 0px;
+    cursor: pointer;
+}
+
+td, th{
+    text-align: center;
+    
+}
+
+.sample{
+    
+    text-align: center;
+    margin: 80px 80px 80px 80px;
+    width: 80%;
+}
+
+
+.result{
+    
+    background-color: #e5e6e6;
+}
