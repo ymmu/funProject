@@ -6,10 +6,10 @@ $(function(){
     console.log($('#rowCount').val());
     //header
     $('#table').append('<thead>'
-                       +'<th>name</th><th>type</th><th>add</th><th>delete</th>'
+                       +'<th>name</th><th>add</th><th>delete</th>'
                        +'</thead>');
         $('#table').append('<tr>'
-                       +'<td colspan=2 style="text-align:right"><b>Total:</b></td><td colspan=2><input type="text" name="total" value="20"></td>'
+                       +'<td colspan=3><b>Total:</b><input type="text" name="total" value="20"></td>'
                        +'</tr>');
     $('#table').append('<tbody id="tbody"></tbody>');
     
@@ -24,13 +24,13 @@ var addRow= function(){
         +'<td><select id="select_custom">'
         +'<option value="ID">ID</option>'
         +'<option value="Name">Name</option>'
-        +'<option value="E-mail">E-mail</option>'
+        +'<option value="Email">Email</option>'
+        +'<option value="Password">Password</option>'
         +'<option value="Sex">Sex</option>'
         +'<option value="TEL">TEL</option>'
         +'<option value="Country">Country</option>'
         +'<option value="ISO2">ISO2</option>'
-        +'</select><input type="text" name="name" value="'+rowCount+'"></td>'
-       +'<td><input type="text" name="type" value="String"></td>'
+        +'</select></td>'
        +'<td><button id="pmbutton" name="add" onclick="addRow()">+</button></td>'
        +'<td><button id="pmbutton" name="delete'+rowCount+'" id="delete'+rowCount+'" onclick="deleteRow('+rowCount+')">-</button></td>'
        +'</tr>';
@@ -72,17 +72,9 @@ var submitB = function(){
             }else if(i>1){
                 if(j==0){
                     
-                    pack["name"+(i-2)]=$(this).find('#select_custom').find(":selected").text();
-                    console.log($(this).find('input')[0].value);
+                    pack["type"+(i-2)]=$(this).find('#select_custom').find(":selected").text();
+                    console.log($(this).find('#select_custom').find(":selected").text());
                 }
-                
-                
-                /*else if(j==1){
-                    
-                    pack["type"+(i-2)]=$(this).find('input')[0].value;
-                    console.log($(this).find('input')[0].value);
-                    //data.push(pack);
-                }*/
                 
             }
 
@@ -114,7 +106,32 @@ var submitB = function(){
             window.location.href += data.download_url;
         
             $('.sample').empty();
-            $('.sample').append(data.sample);
+            var sample = data.sample;
+            var sample_chunk = sample.split(',');
+            
+            for(var i=0; i<sample_chunk.length; i++){
+                console.log(sample_chunk[i]);
+                
+                if(i==0){
+                    var first_chunk =sample_chunk[0].split('{');
+                    
+                    $('.sample').append('{</n><pre>'+first_chunk[1]+'</pre></n>');
+                   
+                    /*$('.sample').append('<pre>'+first_chunck[0]+'</pre><br/>');
+                    */
+                }else if(i<sample_chunk.length-1){
+                    $('.sample').append('<pre>'+sample_chunk[i]+'</pre></n>');
+        
+                }else{
+                    var last_chunk =sample_chunk[sample_chunk.length-1].split('}');
+                    
+                    $('.sample').append('<pre>'+last_chunk[0]+'</n>');
+                    $('.sample').append('}');
+                    
+                }
+                
+            }
+            
             
         },
         error: function(request,status,error){
