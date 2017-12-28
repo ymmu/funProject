@@ -3,7 +3,8 @@ from django import forms
 from django.http import HttpResponse
 from django.http import JsonResponse
 import json
-from .MakeJsonList import makeJsonList
+#from .MakeJsonList import makeJsonList
+from .MakeJsonList_copy import makeJsonList
 import os
 from django.conf import settings
 import zipfile
@@ -14,12 +15,12 @@ import csv
 
 def json_list(request):
     if request.method == 'GET':
-        #request_data = ((request.body).decode('utf-8'))
         total=request.GET['total']
         num=request.GET['num']
         dataList=[]
         for i in range(0,int(num)):
-            one=[request.GET['name%d'%i], request.GET['type%d'%i]]
+            #one=[request.GET['name%d'%i], request.GET['type%d'%i]] # 1차버전
+            one=request.GET['type%d'%i] #2차버전. 셀렉터 값만 받아오면 되므로 name이 사라짐
             dataList.append(one)
         #makeJsonList(int(total))
         
