@@ -67,7 +67,11 @@ var submitB = function(){
     $('tr').each(function(i){ 
         $('td', this).each(function(j){
 
+<<<<<<< HEAD
             if(i==1 && j==1){
+=======
+            if(i==1 && j==0){
+>>>>>>> 3e5d6afed9153a9b1f835c47c1e73c315eb2e57a
                 pack.total=$(this).find('input')[0].value;
             }else if(i>1){
                 if(j==0){
@@ -117,8 +121,11 @@ var submitB = function(){
                     
                     $('.sample').append('{</n><pre>'+first_chunk[1]+'</pre></n>');
                    
+<<<<<<< HEAD
                     /*$('.sample').append('<pre>'+first_chunck[0]+'</pre><br/>');
                     */
+=======
+>>>>>>> 3e5d6afed9153a9b1f835c47c1e73c315eb2e57a
                 }else if(i<sample_chunk.length-1){
                     $('.sample').append('<pre>'+sample_chunk[i]+'</pre></n>');
         

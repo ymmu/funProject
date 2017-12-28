@@ -64,7 +64,11 @@
 }
 
 input[type=text] {
+<<<<<<< HEAD
     width: 10%;
+=======
+    width: 20%;
+>>>>>>> 3e5d6afed9153a9b1f835c47c1e73c315eb2e57a
     border: 1px;
     color: #242424;
     padding: 10px 10px;
